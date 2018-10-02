@@ -1,0 +1,1 @@
+web: gunicorn labStockAPI.wsgi --log-file -

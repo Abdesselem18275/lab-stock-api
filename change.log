@@ -1,0 +1,14 @@
+from productAPI.models import Product
+from productAPI.serializers import ProductSerializer
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+
+product = Product(designation='Produit1')
+product.save()
+
+product = product(designation='Produit2')
+product.save()
+
+
+product = ProductSerializer(product)
+product.data
