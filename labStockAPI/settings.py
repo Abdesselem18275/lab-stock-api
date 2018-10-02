@@ -25,7 +25,7 @@ SECRET_KEY = 'lfz9&&@@4w01#p-u76fc(%)em81!dqb^lg_uzfpef94s7fl1rc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['polar-plains-17863.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','polar-plains-17863.herokuapp.com']
 
 
 # Application definition
