@@ -81,6 +81,8 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD':'root',
         'NAME': 'LabstockDB',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     },
 }
 
