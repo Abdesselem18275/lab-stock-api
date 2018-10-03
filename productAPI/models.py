@@ -9,6 +9,7 @@ class Famille(models.Model):
 class Laboratoire(models.Model):
     designation = models.CharField(max_length=100, blank=True, default='') 
 
+
 class Product(models.Model):
     designation = models.CharField(max_length=100, blank=True, default='')
     reference = models.CharField(max_length=100, default='')

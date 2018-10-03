@@ -1,13 +1,20 @@
-from productAPI.models import Product,Famille
+from rest_framework.test import APIRequestFactory
+from rest_framework.test import APIClient
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+from django.urls import reverse
 
-from productAPI.serializers import ProductSerializer
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
 
 
-from productAPI.serializers import ProductSerializer
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser.
+# Using the standard RequestFactory API to create a form POST request
 
-product = ProductSerializer(product)
-print(product.data)
+user = User.objects.get(username='root')
+
+url = reverse('login')
+print(user)
+
+client = APIClient()
+
+client.force_authenticate(user=user)
+request = client.post('http://localhost:8000/login/', {'username': 'root','password': 'root'},format='json')
+print(request)

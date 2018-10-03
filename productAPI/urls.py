@@ -2,6 +2,9 @@ from productAPI import views
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
+from django.urls import path
+
+
 
 
 
@@ -21,6 +24,8 @@ urlpatterns = [
     url(r'^laboratoires/$', views.LaboratoireList.as_view()),
     url(r'^laboratoires/(?P<designation>[\w.@+-]+)/$', views.laboratoire_search),
     url(r'^laboratoires/(?P<pk>[0-9]+)/$', views.LaboratoireDetail.as_view()),
+
+    url('login/', views.login)
 ]
 
 

@@ -1,3 +1,7 @@
-from django.test import TestCase
+from rest_framework.test import APIRequestFactory
 
-# Create your tests here.
+# Using the standard RequestFactory API to create a form POST request
+factory = APIRequestFactory()
+request = factory.post('/login/', {'name': 'new idea'})
+response = view(request)
+print(view)
