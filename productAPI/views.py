@@ -39,7 +39,7 @@ def product_search(request, designation):
   
 
     if request.method == 'GET':
-        products = Product.objects.all().filter(designation=designation)
+        products = Product.objects.all().filter(designation__icontains=designation)
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
@@ -47,7 +47,7 @@ def product_search(request, designation):
 @api_view(['GET', 'POST']) 
 def famille_search(request, designation):
     if request.method == 'GET':
-        familles = Famille.objects.all().filter(designation=designation)
+        familles = Famille.objects.all().filter(designation__icontains=designation)
         serializer = FamilleSerializer(familles, many=True)
         return Response(serializer.data)
 
@@ -56,7 +56,7 @@ def famille_search(request, designation):
 def laboratoire_search(request, designation):
     
     if request.method == 'GET':
-        laboratoires = Laboratoire.objects.all().filter(designation=designation)
+        laboratoires = Laboratoire.objects.all().filter(designation__icontains=designation)
         serializer = LaboratoireSerializer(laboratoires, many=True)
         return Response(serializer.data)
 

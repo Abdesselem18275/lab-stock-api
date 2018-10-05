@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^laboratoires/(?P<designation>[\w.@+-]+)/$', views.laboratoire_search),
     url(r'^laboratoires/(?P<pk>[0-9]+)/$', views.LaboratoireDetail.as_view()),
 
-    url('login/', views.login)
+    url('api/login/', views.login)
 ]
 
 
