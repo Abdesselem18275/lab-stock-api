@@ -43,6 +43,14 @@ def product_search(request, designation):
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
+@api_view(['GET', 'POST']) 
+def product_detail_basic(request, id):
+  
+    if request.method == 'GET':
+        products = Product.objects.get(pk=id)
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+
 @csrf_exempt
 @api_view(['GET', 'POST']) 
 def famille_search(request, designation):
