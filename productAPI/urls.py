@@ -14,8 +14,8 @@ from django.urls import path
 
 urlpatterns = [
     url(r'^products/$', views.ProductList.as_view()),
-    url(r'^products/(?P<designation>[\w.@+-]+)/$', views.product_search),
-    url(r'^products/(?P<id>[0-9]+)/$', views.product_detail_basic),
+    url(r'^products_search/(?P<designation>[\w.@+-]+)/$', views.product_search),
+    url(r'^products/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
 
     url(r'^familles/$', views.FamilleList.as_view()),
     url(r'^familles/(?P<designation>[\w.@+-]+)/$', views.famille_search),

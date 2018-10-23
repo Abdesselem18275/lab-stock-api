@@ -43,13 +43,7 @@ def product_search(request, designation):
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
-@api_view(['GET', 'POST']) 
-def product_detail_basic(request, id):
-  
-    if request.method == 'GET':
-        products = Product.objects.get(pk=id)
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+
 
 @csrf_exempt
 @api_view(['GET', 'POST']) 
@@ -76,6 +70,7 @@ class ProductList(generics.ListCreateAPIView):
 @method_decorator(csrf_exempt, name='dispatch')    
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
+    queryset = Product.objects.all()
 
 @method_decorator(csrf_exempt, name='dispatch')
 class FamilleList(generics.ListCreateAPIView):
