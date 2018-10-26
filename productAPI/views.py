@@ -39,7 +39,9 @@ def product_search(request, designation):
   
 
     if request.method == 'GET':
+
         products = Product.objects.all().filter(designation__icontains=designation)
+
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 

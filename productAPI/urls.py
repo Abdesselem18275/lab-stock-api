@@ -14,16 +14,16 @@ from django.urls import path
 
 urlpatterns = [
     url(r'^products/$', views.ProductList.as_view()),
-    url(r'^products_search/(?P<designation>[\w.@+-]+)/$', views.product_search),
-    url(r'^products/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
+    url(r'^products/(?P<designation>[\w.@+-]+)/$', views.product_search),
+    url(r'^product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
 
     url(r'^familles/$', views.FamilleList.as_view()),
     url(r'^familles/(?P<designation>[\w.@+-]+)/$', views.famille_search),
-    url(r'^familles/(?P<pk>[0-9]+)/$', views.FamilleDetail.as_view()),
+    url(r'^famille/(?P<pk>[0-9]+)/$', views.FamilleDetail.as_view()),
 
     url(r'^laboratoires/$', views.LaboratoireList.as_view()),
     url(r'^laboratoires/(?P<designation>[\w.@+-]+)/$', views.laboratoire_search),
-    url(r'^laboratoires/(?P<pk>[0-9]+)/$', views.LaboratoireDetail.as_view()),
+    url(r'^laboratoire/(?P<pk>[0-9]+)/$', views.LaboratoireDetail.as_view()),
 
     url('api/login/', views.login)
 ]
