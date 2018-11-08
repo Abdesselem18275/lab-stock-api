@@ -1,7 +1,7 @@
-from rest_framework.test import APIRequestFactory
+from rest_framework.test import APIClient
 
-# Using the standard RequestFactory API to create a form POST request
-factory = APIRequestFactory()
-request = factory.post('/login/', {'name': 'new idea'})
-response = view(request)
-print(view)
+client = APIClient()
+
+famille = {'designation': 'Familly client test'}
+#client.put('/famille/1',famille, format='json')
+client.get('/products')
