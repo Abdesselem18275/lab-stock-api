@@ -24,8 +24,8 @@ class Product(models.Model):
     testContenant = models.IntegerField(default='1', null=True)
     cmm = models.IntegerField(default='1', null=True)
     StockMiniMois = models.IntegerField(default='1', null=True)
-    familles = models.ForeignKey(Famille, related_name='products',on_delete=models.SET_NULL, blank=True, null=True)
-    laboratoires = models.ForeignKey(Laboratoire,related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
+    famille = models.ForeignKey(Famille, related_name='products',on_delete=models.SET_NULL, blank=True, null=True)
+    laboratoire = models.ForeignKey(Laboratoire,related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __unicode__(self):
         return self.designation
