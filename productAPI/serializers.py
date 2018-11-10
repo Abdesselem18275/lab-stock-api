@@ -8,18 +8,20 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
-        depth = 1
 
 
 class FamilleSerializer(serializers.ModelSerializer):
 
-    
+    products = ProductSerializer(many=True, read_only=True)
+
     class Meta:
         model = Famille
         fields = '__all__'
 
 class LaboratoireSerializer(serializers.ModelSerializer):
      
+    products = ProductSerializer(many=True, read_only=True)
+
 
     class Meta:
         model = Laboratoire

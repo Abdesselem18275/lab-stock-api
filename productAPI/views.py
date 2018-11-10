@@ -47,6 +47,8 @@ def product_search(request, designation):
 
 
 
+
+
 @csrf_exempt
 @api_view(['GET', 'POST']) 
 def famille_search(request, designation):
@@ -63,6 +65,8 @@ def laboratoire_search(request, designation):
         laboratoires = Laboratoire.objects.all().filter(designation__icontains=designation)
         serializer = LaboratoireSerializer(laboratoires, many=True)
         return Response(serializer.data)
+
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ProductList(generics.ListCreateAPIView):
