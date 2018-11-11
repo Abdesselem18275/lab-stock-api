@@ -4,20 +4,19 @@ from django.db import models
 
 
 class Famille(models.Model):
-    designation = models.CharField(max_length=100, blank=True, default='') 
+    designation = models.CharField(unique=True,max_length=100, blank=True, default='') 
 
     def __unicode__(self):
         return self.designation
 
 class Laboratoire(models.Model):
-    designation = models.CharField(max_length=100, blank=True, default='') 
-
+    designation = models.CharField(unique=True,max_length=100, blank=True, default='') 
     def __unicode__(self):
         return self.designation
 
 
 class Product(models.Model):
-    designation = models.CharField(max_length=100, blank=True, default='')
+    designation = models.CharField(unique=True,max_length=100, blank=True, default='')
     reference = models.CharField(max_length=100, default='')
     creation_date = models.DateField(default=datetime.date.today)
     contenantCoffret = models.IntegerField(default='1', null=True)
@@ -29,4 +28,6 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.designation
+
+    
 

@@ -3,12 +3,13 @@ from productAPI.models import Product, Famille, Laboratoire
 
 
 class ProductSerializer(serializers.ModelSerializer):  
-
+    
+    
     
     class Meta:
         model = Product
         fields = '__all__'
-
+   
 
 class FamilleSerializer(serializers.ModelSerializer):
 
@@ -21,7 +22,6 @@ class FamilleSerializer(serializers.ModelSerializer):
 class LaboratoireSerializer(serializers.ModelSerializer):
      
     products = ProductSerializer(many=True, read_only=True)
-
 
     class Meta:
         model = Laboratoire

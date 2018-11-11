@@ -14,6 +14,8 @@ from rest_framework.status import (
     HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
+from rest_framework.parsers import JSONParser
+import io
 
 
 @csrf_exempt
@@ -67,11 +69,31 @@ def laboratoire_search(request, designation):
         return Response(serializer.data)
 
 
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def ProductList_(request):
+
+    if request.method == 'GET':
+        products = Product.objects.all();
+        serializer = ProductSerializer(products , many=True);
+        return Response(serializer.data)
+    if request.method == 'POST':
+        data = request.data
+        serializer = ProductSerializer(data=data)
+        print(serializer)
+        print(serializer.is_valid())
+        print(serializer.validated_data)
+        return serializer;  
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ProductList(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        return queryset;
+
 
 @method_decorator(csrf_exempt, name='dispatch')    
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
