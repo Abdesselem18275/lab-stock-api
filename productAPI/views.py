@@ -57,17 +57,17 @@ class ProductDetail(APIView):
         product = get_object_or_404(Product,pk=pk)
         return Response(ProductSerializer(product).data)
 
-    def put(self,request,pk,format='json'):
+    # def put(self,request,pk,format='json'):
         
         
-        instance=get_object_or_404(Product,pk=pk)
-        ProductSerializer(data=request.data)
-        serializer = ProductSerializer(data=request.data)
-        if not(serializer.is_valid(raise_exception=ValueError)):
-           return Response(serializer.error_messages,status=status.HTTP_400_BAD_REQUEST)
+    #     instance=get_object_or_404(Product,pk=pk)
+    #     ProductSerializer(data=request.data)
+    #     serializer = ProductSerializer(data=request.data)
+    #     if not(serializer.is_valid(raise_exception=ValueError)):
+    #        return Response(serializer.error_messages,status=status.HTTP_400_BAD_REQUEST)
 
-        updated_inst=serializer.update(instance,validated_data=request.data)
-        return Response(ProductSerializer(updated_inst).data, status=status.HTTP_201_CREATED)
+    #     updated_inst=serializer.update(instance,validated_data=request.data)
+    #     return Response(ProductSerializer(updated_inst).data, status=status.HTTP_201_CREATED)
 
 
 
