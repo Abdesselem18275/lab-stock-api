@@ -13,9 +13,9 @@ from django.urls import path
 
 
 urlpatterns = [
-    url(r'^products/$', views.ProductList.as_view()),
+    url(r'^products/$', views.ProductList.as_view(),name='get_all_products'),
     url(r'^products/(?P<designation>[\w.@+-]+)/$', views.product_search),
-    url(r'^product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
+    url(r'^product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view(),name='get_product'),
 
     url(r'^familles/$', views.FamilleList.as_view()),
     url(r'^familles/(?P<designation>[\w.@+-]+)/$', views.famille_search),
@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^laboratoires/(?P<designation>[\w.@+-]+)/$', views.laboratoire_search),
     url(r'^laboratoire/(?P<pk>[0-9]+)/$', views.LaboratoireDetail.as_view()),
 
-    url('api/login/', views.login)
+ 
 ]
 
 
