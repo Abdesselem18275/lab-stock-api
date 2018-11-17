@@ -25,7 +25,7 @@ SECRET_KEY = 'lfz9&&@@4w01#p-u76fc(%)em81!dqb^lg_uzfpef94s7fl1rc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver','localhost','lab-stock-api.herokuapp.com']
+ALLOWED_HOSTS = ['lab-stock.herokuapp.com','testserver','localhost','lab-stock-api.herokuapp.com']
 
 
 # Application definition
