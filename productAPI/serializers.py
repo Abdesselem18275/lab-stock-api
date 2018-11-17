@@ -4,25 +4,24 @@ from productAPI.models import Product, Famille, Laboratoire
 
 class ProductSerializer(serializers.ModelSerializer):  
     
-    
-    
     class Meta:
         model = Product
         fields = '__all__'
-   
-
+    
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['famille'] = FamilleSerializer(instance.famille).data
+        response['laboratoire'] = FamilleSerializer(instance.laboratoire).data
+        return response
+    
 class FamilleSerializer(serializers.ModelSerializer):
-
-    products = ProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Famille
         fields = '__all__'
-
+        
 class LaboratoireSerializer(serializers.ModelSerializer):
      
-    products = ProductSerializer(many=True, read_only=True)
-
     class Meta:
         model = Laboratoire
         fields = '__all__'
