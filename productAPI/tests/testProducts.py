@@ -34,7 +34,6 @@ class ProductsTests(APITestCase):
         products = Product.objects.all()
         serializer = ProductSerializer(products , many=True)
         self.assertEqual(response.data , serializer.data,'Retreive many products')
-        self.assertEqual(response.status_code , status.HTTP_200_OK)
         
 
     def test_post_product(self):
@@ -44,7 +43,7 @@ class ProductsTests(APITestCase):
         produit_1.famille = famille_1
         produit_1.laboratoire = laboratoire_1
         serializer = ProductSerializer(produit_1)
-        response = self.client.post(reverse('get_all_products'),serializer.data,format='json')
+        response = self.client.post(reverse('get_all_products'),serializer.data)
         self.assertEqual(response.status_code,status.HTTP_201_CREATED,'Post data');
 
 
@@ -62,7 +61,6 @@ class ProductsTests(APITestCase):
         product_1.famille = famille_1
         product_1.laboratoire = laboratoire_1
         serializer = ProductSerializer(product_1)
-        print(serializer.data)
         put_response = self.client.put('/product/1',serializer.data)
         get_response = self.client.get('/product/1/')
         self.assertEqual(get_response.data, serializer.data,'Edit one product')

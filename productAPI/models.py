@@ -5,7 +5,6 @@ from django.db import models
 
 class Famille(models.Model):
     designation = models.CharField(unique=True,max_length=100, blank=True, default='') 
-
     def __unicode__(self):
         return self.designation
 
