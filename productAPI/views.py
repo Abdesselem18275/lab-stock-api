@@ -45,7 +45,7 @@ class ProductList(generics.ListCreateAPIView):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Famille.objects.all()
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 @method_decorator(csrf_exempt, name='dispatch')

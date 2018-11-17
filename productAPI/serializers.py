@@ -11,9 +11,10 @@ class ProductSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         response = super().to_representation(instance)
         response['famille'] = FamilleSerializer(instance.famille).data
-        response['laboratoire'] = FamilleSerializer(instance.laboratoire).data
+        response['laboratoire'] = LaboratoireSerializer(instance.laboratoire).data
         return response
-    
+
+
 class FamilleSerializer(serializers.ModelSerializer):
 
     class Meta:
