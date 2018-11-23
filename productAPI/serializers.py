@@ -1,5 +1,13 @@
 from rest_framework import serializers
-from productAPI.models import Product, Famille, Laboratoire
+from productAPI.models import Product, Famille, Laboratoire,ProductTrans
+
+
+
+class TransactionSerializer(serializers.ModelSerializer):  
+    
+    class Meta:
+        model = ProductTrans
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):  
