@@ -1,9 +1,8 @@
 from productAPI.models import Product, Famille, Laboratoire,ProductTrans
 from productAPI.serializers import TransactionSerializer,ProductSerializer ,FamilleSerializer, LaboratoireSerializer
-from rest_framework import generics
+from rest_framework import generics,status,filters
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from rest_framework import status,filters
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
