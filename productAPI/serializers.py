@@ -9,6 +9,10 @@ class TransactionSerializer(serializers.ModelSerializer):
         model = ProductTrans
         fields = '__all__'
 
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['produit'] = ProductSerializer(instance.produit).data
+        return response
 
 class ProductSerializer(serializers.ModelSerializer):  
     
