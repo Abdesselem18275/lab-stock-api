@@ -39,7 +39,7 @@ class Product(models.Model):
 
 class ProductTrans(models.Model):
     numero_lot = models.IntegerField(unique=True,blank=False)
-    produit = models.ForeignKey(Product,related_name='transactions', on_delete=models.SET_NULL, blank=True, null=True)
+    product = models.ForeignKey(Product,related_name='transactions', on_delete=models.SET_NULL, blank=True, null=True)
     quantite = models.IntegerField(default='1',blank=False)
     modification_date=models.DateTimeField(default=datetime.date.today,blank=False)
     creation_date = models.DateField(default=datetime.date.today)

@@ -60,7 +60,7 @@ class TransactionList(generics.ListCreateAPIView):
     serializer_class = TransactionSerializer
     filter_backends = (DjangoFilterBackend,filters.SearchFilter,)
     filter_fields =('trans_type',)
-    search_fields =('produit__designation',)
+    search_fields =('product__designation',)
 
 
 @method_decorator(csrf_exempt, name='dispatch')

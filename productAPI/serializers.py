@@ -11,7 +11,7 @@ class TransactionSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         response = super().to_representation(instance)
-        response['produit'] = ProductSerializer(instance.produit).data
+        response['product'] = ProductSerializer(instance.product).data
         return response
 
 class ProductSerializer(serializers.ModelSerializer):  
