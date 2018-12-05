@@ -43,8 +43,10 @@ class ProductsTests(APITestCase):
         produit_1.famille = famille_1
         produit_1.laboratoire = laboratoire_1
         serializer = ProductSerializer(produit_1)
+        serializer.data['famille_id'] = famille_1.id
+        serializer.data['laboratoire_id'] = laboratoire_1.id
         response = self.client.post(reverse('get_all_products'),serializer.data)
-        self.assertEqual(response.status_code,status.HTTP_201_CREATED,'Post data');
+        self.assertEqual(response.data,serializer.data,'Post data');
 
 
     def test_get_product(self):

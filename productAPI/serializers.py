@@ -3,7 +3,7 @@ from productAPI.models import Product, Famille, Laboratoire,ProductTrans
 
 
 
-class TransactionSerializer(serializers.ModelSerializer):  
+class TransactionSerializer(serializers.ModelSerializer): 
     
     class Meta:
         model = ProductTrans
@@ -15,7 +15,9 @@ class TransactionSerializer(serializers.ModelSerializer):
         return response
 
 class ProductSerializer(serializers.ModelSerializer):  
-    
+    total_quantity = serializers.ReadOnlyField() 
+    total_stock_mois = serializers.ReadOnlyField() 
+
     class Meta:
         model = Product
         fields = '__all__'

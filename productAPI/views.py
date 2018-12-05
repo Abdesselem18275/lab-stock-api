@@ -67,3 +67,17 @@ class TransactionList(generics.ListCreateAPIView):
 class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductTrans.objects.all()
     serializer_class = TransactionSerializer
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class StockList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('designation','id')
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class StockDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
