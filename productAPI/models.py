@@ -43,14 +43,14 @@ class Product(models.Model):
     @property
     def total_quantity(self):
         try :
-            total_in = ProductTrans.objects.filter(product__id=self.id,trans_type = 'IN').annotate(total=Sum('quantite'))[0].total
-        except IndexError as err :
+            total_in = ProductTrans.objects.filter(product__id=self.id,trans_type = 'IN').aggregate(Sum('quantite'))["quantite__sum"]
+        except TypeError as err :
              total_in = 0
         try :
-            total_out = ProductTrans.objects.filter(product__id=self.id,trans_type = 'OUT').annotate(total=Sum('quantite'))[0].total
-        except IndexError as err :
-             total_out = 0
-        return total_in - total_out
+            total_out = ProductTrans.objects.filter(product__id=self.id,trans_type = 'OUT').aggregate(Sum('quantite'))["quantite__sum"]
+        except TypeError as err :
+             total_out = 0  
+        return total_in - total_out 
 
     @property
     def total_stock_mois(self):
