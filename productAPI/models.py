@@ -44,16 +44,19 @@ class Product(models.Model):
     def total_quantity(self):
         try :
             total_in = ProductTrans.objects.filter(product__id=self.id,trans_type = 'IN').aggregate(Sum('quantite'))["quantite__sum"]
+            if ( total_in is None ) : total_in = 0
         except TypeError as err :
              total_in = 0
         try :
             total_out = ProductTrans.objects.filter(product__id=self.id,trans_type = 'OUT').aggregate(Sum('quantite'))["quantite__sum"]
             if ( total_out is None ) : total_out = 0
         except TypeError as err :
-            return total_in - total_out
+            total_out = 0
+        return total_in - total_out
 
     @property
     def total_stock_mois(self):
+        if ( (self.cmm is None) or (self.cmm == 0 )) : return 0 
         return (self.total_quantity * self.testContenant) / self.cmm
 
 
