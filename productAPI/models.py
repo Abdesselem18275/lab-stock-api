@@ -54,8 +54,7 @@ class Product(models.Model):
 
     @property
     def total_stock_mois(self):
-        return self.total_quantity
-        #return (self.total_quantity * self.testContenant) / self.cmm
+        return (self.total_quantity * self.testContenant) / self.cmm
 
 
 
