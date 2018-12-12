@@ -57,8 +57,10 @@ class Product(models.Model):
     @property
     def total_stock_mois(self):
         if ( (self.cmm is None) or (self.cmm == 0 )) : return 0 
-        return (self.total_quantity * self.testContenant) / self.cmm
-
+        try :
+            return (self.total_quantity * self.testContenant) / self.cmm
+        except TypeError as err :
+            return 0
 
 
 class ProductTrans(models.Model):

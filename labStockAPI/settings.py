@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework.test',
     'corsheaders',
-    'django_filters'
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -99,18 +99,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -118,6 +106,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',),
+
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
     }
 

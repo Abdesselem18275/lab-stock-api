@@ -4,6 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
 from django.urls import path
 
+
 urlpatterns = [
     url(r'^products/$', views.ProductList.as_view(),name='get_all_products'),
     url(r'^product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view(),name='get_product'),
@@ -19,6 +20,8 @@ urlpatterns = [
 
     url(r'^stock/$', views.StockList.as_view()),
     url(r'^stock/(?P<pk>[0-9]+)/$', views.StockDetail.as_view()),
+
+    url(r'^login/$', views.login,name='login'),
 ]
 
 
