@@ -20,8 +20,6 @@ from rest_framework.authentication import TokenAuthentication, BasicAuthenticati
 
 
 
-@method_decorator(csrf_exempt, name='dispatch')
-@permission_classes((IsAuthenticated,))
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -29,37 +27,31 @@ class ProductList(generics.ListCreateAPIView):
     search_fields = ('designation','id')
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-@method_decorator(csrf_exempt, name='dispatch')
 class FamilleList(generics.ListCreateAPIView):
     queryset = Famille.objects.all()
     serializer_class = FamilleSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('designation',)
 
-@method_decorator(csrf_exempt, name='dispatch')
 class FamilleDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Famille.objects.all()
     serializer_class = FamilleSerializer
 
-@method_decorator(csrf_exempt, name='dispatch')
 class LaboratoireList(generics.ListCreateAPIView):
     queryset = Laboratoire.objects.all()
     serializer_class = LaboratoireSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('designation',)
 
-@method_decorator(csrf_exempt, name='dispatch')
 class LaboratoireDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Laboratoire.objects.all()
     serializer_class = LaboratoireSerializer
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class TransactionList(generics.ListCreateAPIView):
     queryset = ProductTrans.objects.all()
     serializer_class = TransactionSerializer
@@ -68,13 +60,11 @@ class TransactionList(generics.ListCreateAPIView):
     search_fields =('product__designation',)
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductTrans.objects.all()
     serializer_class = TransactionSerializer
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class StockList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -82,13 +72,11 @@ class StockList(generics.ListCreateAPIView):
     search_fields = ('designation','id')
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class StockDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
-@csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
 def login(request):
@@ -101,5 +89,5 @@ def login(request):
     if not user:
         return Response({'error': 'Invalid Credentials'},
                         status=status.HTTP_404_NOT_FOUND)
-    token, created = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key},status=status.HTTP_200_OK)
+    
+    return Response({'user': user},status=status.HTTP_200_OK)
