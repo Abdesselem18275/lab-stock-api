@@ -89,5 +89,8 @@ def login(request):
     if not user:
         return Response({'error': 'Invalid Credentials'},
                         status=status.HTTP_404_NOT_FOUND)
-    
-    return Response({'user': user},status=status.HTTP_200_OK)
+    content = {
+        'user': str(user),  # `django.contrib.auth.User` instance.
+        'auth': str(request.auth),  # None
+    }
+    return Response(content)
